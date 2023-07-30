@@ -39,7 +39,7 @@ func NewAuthHandler(authService AuthService, userService AuthUserService, adminS
 }
 
 type signUpAdminInput struct {
-	Username string `json:"username"`
+	Username string `json:"not username"`
 	Password string `json:"password"`
 }
 
