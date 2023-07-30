@@ -1,0 +1,344 @@
+basePath: /
+definitions:
+  handler.createStaticCardInput:
+    properties:
+      background_url:
+        type: string
+      chain_name:
+        type: string
+      chain_order:
+        type: integer
+      goal:
+        type: string
+      long_description:
+        type: string
+      options_settings:
+        $ref: '#/definitions/model.OptSettings'
+      ordinary_settings:
+        $ref: '#/definitions/model.OrdSettings'
+      pool:
+        type: string
+      progress_settings:
+        $ref: '#/definitions/model.PrgSettings'
+      short_description:
+        type: string
+      title:
+        type: string
+      type:
+        type: string
+    type: object
+  handler.deleteCardStaticsInput:
+    properties:
+      ids:
+        items:
+          type: string
+        type: array
+    type: object
+  handler.signInInput:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  handler.signUpAdminInput:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  handler.signUpUserInput:
+    properties:
+      avatar_url:
+        type: string
+      nickname:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  handler.updateCardInput:
+    properties:
+      card_id:
+        type: string
+      done_option:
+        type: number
+      progress:
+        type: integer
+    type: object
+  handler.viewCardInput:
+    properties:
+      card_id:
+        type: string
+    type: object
+  model.Award:
+    properties:
+      XPoints:
+        type: integer
+      prize:
+        type: string
+      prize_image_url:
+        type: string
+    type: object
+  model.OptSettings:
+    properties:
+      awards:
+        items:
+          $ref: '#/definitions/model.Award'
+        type: array
+      options:
+        items:
+          type: number
+        type: array
+    type: object
+  model.OrdSettings:
+    properties:
+      award:
+        $ref: '#/definitions/model.Award'
+    type: object
+  model.PrgSettings:
+    properties:
+      award:
+        $ref: '#/definitions/model.Award'
+      max_progress:
+        type: integer
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: API Server for XP-loyality Application
+  title: XP-loyality App API
+  version: "1.0"
+paths:
+  /api/auth/sign-in:
+    post:
+      parameters:
+      - description: login credentials
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handler.signInInput'
+      responses: {}
+      summary: sign in
+      tags:
+      - auth
+  /api/auth/sign-up-admin:
+    post:
+      parameters:
+      - description: sign up info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handler.signUpAdminInput'
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: sign up admin
+      tags:
+      - auth
+  /api/auth/sign-up-user:
+    post:
+      parameters:
+      - description: sign up info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handler.signUpUserInput'
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: sign up user
+      tags:
+      - auth
+  /api/cards:
+    delete:
+      parameters:
+      - description: delete static cards input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handler.deleteCardStaticsInput'
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: delete cards
+      tags:
+      - cards
+    get:
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: get all static cards
+      tags:
+      - cards
+    post:
+      parameters:
+      - description: create static card input
+        in: body
+        name: input
+        schema:
+          $ref: '#/definitions/handler.createStaticCardInput'
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: create static card
+      tags:
+      - cards
+  /api/cards/{username}:
+    get:
+      parameters:
+      - description: username
+        in: path
+        name: username
+        required: true
+        type: string
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: get all user cards by username
+      tags:
+      - cards
+  /api/cards/done:
+    post:
+      parameters:
+      - description: update card input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handler.updateCardInput'
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: update card
+      tags:
+      - cards
+  /api/cards/profile:
+    get:
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: get all user cards by token
+      tags:
+      - cards
+  /api/cards/view:
+    post:
+      parameters:
+      - description: view card
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handler.viewCardInput'
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: view card
+      tags:
+      - cards
+  /api/images/avatar:
+    get:
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: get avatar images
+      tags:
+      - images
+  /api/images/card-background:
+    get:
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: get background images
+      tags:
+      - images
+  /api/images/prize:
+    get:
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: get prize images
+      tags:
+      - images
+  /api/images/upload/avatar:
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: avatar image
+        in: formData
+        name: image
+        required: true
+        type: file
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: upload avatar image
+      tags:
+      - images
+  /api/images/upload/card-background:
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: prize image
+        in: formData
+        name: image
+        required: true
+        type: file
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: upload card background image
+      tags:
+      - images
+  /api/images/upload/prize:
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: prize image
+        in: formData
+        name: image
+        required: true
+        type: file
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: upload prize image
+      tags:
+      - images
+  /api/users/{username}:
+    get:
+      parameters:
+      - description: username
+        in: path
+        name: username
+        required: true
+        type: string
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: get user by username
+      tags:
+      - users
+  /api/users/profile:
+    get:
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: get user by token
+      tags:
+      - users
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

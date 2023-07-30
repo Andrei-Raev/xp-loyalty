@@ -1,0 +1,13 @@
+{
+    "server_port": "8000",
+    "moderator_username": "moderator",
+    "moderator_password": "moderator",
+    "mongo": {
+        "uri": "mongodb://localhost:27017",
+        "name": "test"
+    },
+    "user": {
+        "daily_cards_num": 1,
+        "unique_goals": false
+    }
+}

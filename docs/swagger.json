@@ -1,0 +1,558 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API Server for XP-loyality Application",
+        "title": "XP-loyality App API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {
+        "/api/auth/sign-in": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "sign in",
+                "parameters": [
+                    {
+                        "description": "login credentials",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.signInInput"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/auth/sign-up-admin": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "sign up admin",
+                "parameters": [
+                    {
+                        "description": "sign up info",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.signUpAdminInput"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/auth/sign-up-user": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "sign up user",
+                "parameters": [
+                    {
+                        "description": "sign up info",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.signUpUserInput"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/cards": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "cards"
+                ],
+                "summary": "get all static cards",
+                "responses": {}
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "cards"
+                ],
+                "summary": "create static card",
+                "parameters": [
+                    {
+                        "description": "create static card input",
+                        "name": "input",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/handler.createStaticCardInput"
+                        }
+                    }
+                ],
+                "responses": {}
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "cards"
+                ],
+                "summary": "delete cards",
+                "parameters": [
+                    {
+                        "description": "delete static cards input",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.deleteCardStaticsInput"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/cards/done": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "cards"
+                ],
+                "summary": "update card",
+                "parameters": [
+                    {
+                        "description": "update card input",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.updateCardInput"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/cards/profile": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "cards"
+                ],
+                "summary": "get all user cards by token",
+                "responses": {}
+            }
+        },
+        "/api/cards/view": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "cards"
+                ],
+                "summary": "view card",
+                "parameters": [
+                    {
+                        "description": "view card",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.viewCardInput"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/cards/{username}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "cards"
+                ],
+                "summary": "get all user cards by username",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "username",
+                        "name": "username",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/images/avatar": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "images"
+                ],
+                "summary": "get avatar images",
+                "responses": {}
+            }
+        },
+        "/api/images/card-background": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "images"
+                ],
+                "summary": "get background images",
+                "responses": {}
+            }
+        },
+        "/api/images/prize": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "images"
+                ],
+                "summary": "get prize images",
+                "responses": {}
+            }
+        },
+        "/api/images/upload/avatar": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "tags": [
+                    "images"
+                ],
+                "summary": "upload avatar image",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "avatar image",
+                        "name": "image",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/images/upload/card-background": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "tags": [
+                    "images"
+                ],
+                "summary": "upload card background image",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "prize image",
+                        "name": "image",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/images/upload/prize": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "tags": [
+                    "images"
+                ],
+                "summary": "upload prize image",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "prize image",
+                        "name": "image",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/users/profile": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "get user by token",
+                "responses": {}
+            }
+        },
+        "/api/users/{username}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "get user by username",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "username",
+                        "name": "username",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "handler.createStaticCardInput": {
+            "type": "object",
+            "properties": {
+                "background_url": {
+                    "type": "string"
+                },
+                "chain_name": {
+                    "type": "string"
+                },
+                "chain_order": {
+                    "type": "integer"
+                },
+                "goal": {
+                    "type": "string"
+                },
+                "long_description": {
+                    "type": "string"
+                },
+                "options_settings": {
+                    "$ref": "#/definitions/model.OptSettings"
+                },
+                "ordinary_settings": {
+                    "$ref": "#/definitions/model.OrdSettings"
+                },
+                "pool": {
+                    "type": "string"
+                },
+                "progress_settings": {
+                    "$ref": "#/definitions/model.PrgSettings"
+                },
+                "short_description": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.deleteCardStaticsInput": {
+            "type": "object",
+            "properties": {
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "handler.signInInput": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.signUpAdminInput": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.signUpUserInput": {
+            "type": "object",
+            "properties": {
+                "avatar_url": {
+                    "type": "string"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.updateCardInput": {
+            "type": "object",
+            "properties": {
+                "card_id": {
+                    "type": "string"
+                },
+                "done_option": {
+                    "type": "number"
+                },
+                "progress": {
+                    "type": "integer"
+                }
+            }
+        },
+        "handler.viewCardInput": {
+            "type": "object",
+            "properties": {
+                "card_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Award": {
+            "type": "object",
+            "properties": {
+                "XPoints": {
+                    "type": "integer"
+                },
+                "prize": {
+                    "type": "string"
+                },
+                "prize_image_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.OptSettings": {
+            "type": "object",
+            "properties": {
+                "awards": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Award"
+                    }
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "model.OrdSettings": {
+            "type": "object",
+            "properties": {
+                "award": {
+                    "$ref": "#/definitions/model.Award"
+                }
+            }
+        },
+        "model.PrgSettings": {
+            "type": "object",
+            "properties": {
+                "award": {
+                    "$ref": "#/definitions/model.Award"
+                },
+                "max_progress": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
