@@ -4,7 +4,7 @@ import "errors"
 
 var (
 	ErrUserExists              = errors.New("user exists")
-	ErrUserNotFound            = errors.New("user not found")
+	ErrUserNotFound            = errors.New("My user not found")
 	ErrInvalidAccessToken      = errors.New("access token in invalid")
 	ErrUnexpectedSigningMethod = errors.New("unexpected signing method")
 	ErrWrongPassword           = errors.New("worng password")

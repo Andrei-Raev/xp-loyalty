@@ -122,7 +122,7 @@ func (h AuthHandler) SignUpUser(ctx *gin.Context) {
 }
 
 type signInInput struct {
-	Username string `json:"not username"`
+	Username string `json:"username"`
 	Password string `json:"password"`
 }
 
