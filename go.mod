@@ -1,4 +1,4 @@
-module github.com/wintermonth2298/xp-loyalty
+module github.com/Andrei-Raev/xp-loyalty
 
 go 1.18
 

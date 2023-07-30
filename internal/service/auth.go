@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
 	"github.com/golang-jwt/jwt"
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
 )
 
 type CredentialsRepository interface {

@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
 )
 
 type ImagesRepository struct {

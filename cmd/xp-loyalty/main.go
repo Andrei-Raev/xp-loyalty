@@ -16,14 +16,14 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 
-	"github.com/wintermonth2298/xp-loyalty/docs"
-	"github.com/wintermonth2298/xp-loyalty/internal/handler"
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
-	"github.com/wintermonth2298/xp-loyalty/internal/repository/mongo"
-	"github.com/wintermonth2298/xp-loyalty/internal/service"
-	"github.com/wintermonth2298/xp-loyalty/pkg/config"
-	"github.com/wintermonth2298/xp-loyalty/pkg/mongo_client"
-	"github.com/wintermonth2298/xp-loyalty/pkg/server"
+	"github.com/Andrei-Raev/xp-loyalty/docs"
+	"github.com/Andrei-Raev/xp-loyalty/internal/handler"
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
+	"github.com/Andrei-Raev/xp-loyalty/internal/repository/mongo"
+	"github.com/Andrei-Raev/xp-loyalty/internal/service"
+	"github.com/Andrei-Raev/xp-loyalty/pkg/config"
+	"github.com/Andrei-Raev/xp-loyalty/pkg/mongo_client"
+	"github.com/Andrei-Raev/xp-loyalty/pkg/server"
 )
 
 // @title XP-loyality App API

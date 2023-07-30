@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/mock"
 
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
 )
 
 type CardsRepositoryMock struct {

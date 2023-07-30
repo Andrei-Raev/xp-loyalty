@@ -11,7 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
 )
 
 type CardsRepository struct {

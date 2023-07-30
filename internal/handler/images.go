@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
 )
 
 type ImageService interface {

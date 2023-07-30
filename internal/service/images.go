@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
 )
 
 type ImageRepository interface {
