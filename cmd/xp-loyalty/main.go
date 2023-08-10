@@ -138,10 +138,10 @@ func main() {
 	apiAdmin := router.Group("/api", authHandler.WithAuth(model.RoleAdmin))
 	apiModerator := router.Group("/api", authHandler.WithAuth(model.RoleModerator))
 	{
-		// auth 232
-		api.POST("/auth/sign-in", authHandler.SignIn)
-		api.POST("/auth/sign-up-user", authHandler.SignUpUser)
-		apiModerator.POST("/auth/sign-up-admin", authHandler.SignUpAdmin)
+		// auth
+		api.POST("/aauth/sign-in", authHandler.SignIn)
+		api.POST("/aauth/sign-up-user", authHandler.SignUpUser)
+		apiModerator.POST("/aauth/sign-up-admin", authHandler.SignUpAdmin)
 
 		// cards
 		apiAdmin.GET("/cards", cardsHandler.GetAllStatic)
