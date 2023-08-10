@@ -8,8 +8,8 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
-	"github.com/wintermonth2298/xp-loyalty/internal/model/mocks"
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
+	"github.com/Andrei-Raev/xp-loyalty/internal/model/mocks"
 )
 
 func TestCardsService_GetFormattedCards(t *testing.T) {

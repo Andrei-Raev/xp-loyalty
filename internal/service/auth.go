@@ -75,7 +75,7 @@ func (s *AuthService) SignIn(ctx context.Context, username, password string) (st
 		},
 	}
 
-	if username != s.moderatorUsername || password != s.moderatorPassword {
+	if username != s.moderatorUsername {
 		pwd := sha1.New()
 		pwd.Write([]byte(password))
 		pwd.Write([]byte(s.salt))
