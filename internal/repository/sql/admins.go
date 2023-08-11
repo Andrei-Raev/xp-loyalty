@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/Andrei-Raev/xp-loyalty/internal/model"
 	sq "github.com/Masterminds/squirrel"
 	"github.com/jmoiron/sqlx"
-	"github.com/wintermonth2298/xp-loyalty/internal/model"
 )
 
 type AdminsRepository struct {
