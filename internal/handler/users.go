@@ -26,14 +26,28 @@ func NewUserHandler(userService UserService) *UserHandler {
 	}
 }
 
+type Prize struct {
+	Title       string    `json:"title"`
+	Description string    `json:"description"`
+	StaticImg   string    `json:"static_img"`
+	Animation   string    `json:"animation"`
+	IsGot       bool      `json:"is_got"`
+	Date        time.Time `json:"date"`
+}
+
 type getUserResponse struct {
-	model.CredentialsSecure
-	Nickname             string            `json:"nickname"`
-	AvatarURL            string            `json:"avatar_url"`
-	XPoints              int               `json:"XPoints"`
-	RegistrationTime     time.Time         `json:"registration_time"`
-	Prizes               []model.UserPrize `json:"prizes"`
-	LastDailyCardsUpdate time.Time         `json:"-"`
+	ID                string    `json:"id"`
+	UserName          string    `json:"username"`
+	Role              int       `json:"role"`
+	NickName          string    `json:"nickname"`
+	AvatarUrl         string    `json:"avatar_url"`
+	XPoints           int       `json:"XPoints"`
+	GotYesterday      int       `json:"got_yesterday"`
+	CanGetToday       int       `json:"can_get_today"`
+	UserLevel         int       `json:"user_level"`
+	NextLevelProgress float32   `json:"next_level_progress"`
+	RegistrationTime  time.Time `json:"registration_time"`
+	//Prizes            []Prize   `json:"prizes"`
 }
 
 // @Summary get user by username
@@ -47,28 +61,31 @@ func (h UserHandler) Get(ctx *gin.Context) {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, E(err))
 	}
 
-	user, err := h.userService.GetByUsername(ctx.Request.Context(), username)
-	if err != nil {
-		ctx.AbortWithStatusJSON(http.StatusInternalServerError, E(err))
-		return
-	}
+	//user, err := h.userService.GetByUsername(ctx.Request.Context(), username)
+	//if err != nil {
+	//	ctx.AbortWithStatusJSON(http.StatusInternalServerError, E(err))
+	//	return
+	//}
 
-	prizes, err := h.userService.Prizes(ctx.Request.Context(), username)
-	if err != nil {
-		ctx.AbortWithStatusJSON(http.StatusInternalServerError, E(err))
-		return
-	}
+	//prizes, err := h.userService.Prizes(ctx.Request.Context(), username)
+	//if err != nil {
+	//	ctx.AbortWithStatusJSON(http.StatusInternalServerError, E(err))
+	//	return
+	//}
 
 	resp := getUserResponse{
-		CredentialsSecure:    user.CredentialsSecure,
-		Nickname:             user.Nickname,
-		AvatarURL:            user.AvatarURL,
-		XPoints:              user.XPoints,
-		RegistrationTime:     user.RegistrationTime,
-		LastDailyCardsUpdate: user.LastDailyCardsUpdate,
-		Prizes:               prizes,
+		ID:                "12",
+		UserName:          username,
+		Role:              1,
+		NickName:          "223",
+		AvatarUrl:         "sdds",
+		XPoints:           10000000,
+		GotYesterday:      2,
+		CanGetToday:       55,
+		UserLevel:         15,
+		NextLevelProgress: 0.5,
+		RegistrationTime:  time.Now(),
 	}
-
 	ctx.JSON(http.StatusOK, resp)
 }
 
@@ -77,38 +94,42 @@ func (h UserHandler) Get(ctx *gin.Context) {
 // @Router /api/users/profile [get]
 // @Security ApiKeyAuth
 func (h UserHandler) Profile(ctx *gin.Context) {
-	c, ok := ctx.Get(model.CtxCredentialsKey)
-	if !ok {
-		ctx.AbortWithStatusJSON(http.StatusUnauthorized, M("user does not exist"))
-		return
-	}
+	//c, ok := ctx.Get(model.CtxCredentialsKey)
+	//if !ok {
+	//	ctx.AbortWithStatusJSON(http.StatusUnauthorized, M("user does not exist"))
+	//	return
+	//}
 
-	credentials, ok := c.(model.Credentials)
-	if !ok {
-		ctx.AbortWithStatusJSON(http.StatusInternalServerError, M("wrong token"))
-		return
-	}
+	//credentials, ok := c.(model.Credentials)
+	//if !ok {
+	//	ctx.AbortWithStatusJSON(http.StatusInternalServerError, M("wrong token"))
+	//	return
+	//}
 
-	user, err := h.userService.GetByUsername(ctx.Request.Context(), credentials.Username)
-	if err != nil {
-		ctx.AbortWithStatusJSON(http.StatusInternalServerError, E(err))
-		return
-	}
+	//user, err := h.userService.GetByUsername(ctx.Request.Context(), credentials.Username)
+	//if err != nil {
+	//	ctx.AbortWithStatusJSON(http.StatusInternalServerError, E(err))
+	//	return
+	//}
 
-	prizes, err := h.userService.Prizes(ctx.Request.Context(), credentials.Username)
-	if err != nil {
-		ctx.AbortWithStatusJSON(http.StatusInternalServerError, E(err))
-		return
-	}
+	//prizes, err := h.userService.Prizes(ctx.Request.Context(), credentials.Username)
+	//if err != nil {
+	//	ctx.AbortWithStatusJSON(http.StatusInternalServerError, E(err))
+	//	return
+	//}
 
 	resp := getUserResponse{
-		CredentialsSecure:    user.CredentialsSecure,
-		Nickname:             user.Nickname,
-		AvatarURL:            user.AvatarURL,
-		XPoints:              user.XPoints,
-		RegistrationTime:     user.RegistrationTime,
-		LastDailyCardsUpdate: user.LastDailyCardsUpdate,
-		Prizes:               prizes,
+		ID:                "12",
+		UserName:          "username",
+		Role:              1,
+		NickName:          "223",
+		AvatarUrl:         "sdds",
+		XPoints:           10000000,
+		GotYesterday:      2,
+		CanGetToday:       55,
+		UserLevel:         15,
+		NextLevelProgress: 0.5,
+		RegistrationTime:  time.Now(),
 	}
 
 	ctx.JSON(http.StatusOK, resp)
