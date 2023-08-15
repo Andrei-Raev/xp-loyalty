@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -94,11 +95,13 @@ func (h UserHandler) Get(ctx *gin.Context) {
 // @Router /api/users/profile [get]
 // @Security ApiKeyAuth
 func (h UserHandler) Profile(ctx *gin.Context) {
-	//c, ok := ctx.Get(model.CtxCredentialsKey)
-	//if !ok {
-	//	ctx.AbortWithStatusJSON(http.StatusUnauthorized, M("user does not exist"))
-	//	return
-	//}
+	c, ok := ctx.Get(model.CtxCredentialsKey)
+	if !ok {
+		ctx.AbortWithStatusJSON(http.StatusUnauthorized, M("user does not exist"))
+		return
+	}
+
+	fmt.Println(c)
 
 	//credentials, ok := c.(model.Credentials)
 	//if !ok {
